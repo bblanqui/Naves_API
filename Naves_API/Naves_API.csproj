@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Naves_API.Core\Naves_API.Core.csproj" />
+    <ProjectReference Include="..\Naves_API.Infrastructure\Naves_API.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
