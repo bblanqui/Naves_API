@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Naves_API.Core.Entities;
 using Naves_API.Core.Interfaces;
 
 namespace Naves_API.Controllers
@@ -37,6 +38,14 @@ namespace Naves_API.Controllers
 
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Nave(Nave nave)
+        {
+            await _naveRepository.InsertNave(nave);
+
+            return Ok(nave);
+
+        }
 
     }
 }
