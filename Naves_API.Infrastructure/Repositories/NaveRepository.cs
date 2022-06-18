@@ -32,10 +32,21 @@ namespace Naves_API.Infrastructure.Repositories
             return nave;
         }
 
+       
+
         public async Task InsertNave(Nave nave)
         {
             _db_Sofka_Sofka_NavesContext.Add(nave);
             await _db_Sofka_Sofka_NavesContext.SaveChangesAsync();
+        }
+
+
+        public async  Task<IEnumerable<Nave>> GetNavesLike(string buscar)
+        {
+            var naves = await _db_Sofka_Sofka_NavesContext.Nave.
+                Where(x =>x.NombreNave.Contains(buscar) || x.TipoNaveNavigation.DescripciónNave.Contains(buscar)).
+                ToListAsync();
+            return naves;
         }
     }
 }

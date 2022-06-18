@@ -20,5 +20,9 @@ namespace Naves_API.Core.Entities
 
         public virtual TipoNave TipoNaveNavigation { get; set; }
         public virtual ICollection<Stock> Stock { get; set; }
+
+       
     }
+
+    
 }
