@@ -20,12 +20,20 @@ namespace Naves_API.Controllers
         }
 
         [HttpGet]
-
         public async Task <IActionResult> GetNaves()
         {
             var naves = await _naveRepository.GetNaves();
 
             return Ok(naves);
+
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetNaves(int id)
+        {
+            var nave = await _naveRepository.GetNaves(id);
+
+            return Ok(nave);
 
         }
 
