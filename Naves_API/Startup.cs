@@ -13,6 +13,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Naves_API.Core.Interfaces;
+using Naves_API.Core.Services;
+using Naves_API.Infrastructure.Core;
 using Naves_API.Infrastructure.Data;
 using Naves_API.Infrastructure.Repositories;
 
@@ -33,7 +35,8 @@ namespace Naves_API
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddTransient<INaveRepository, NaveRepository>();
-
+            services.AddTransient<INaveService, NaveService>();
+            services.AddTransient<IStockRepository, StockRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
