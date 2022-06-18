@@ -13,5 +13,7 @@ namespace Naves_API.Core.Interfaces
         Task<Nave> GetNaves(int id);
 
         Task InsertNave(Nave nave);
+
+        Task<IEnumerable<Nave>> GetNavesLike(string buscar);
     }
 }

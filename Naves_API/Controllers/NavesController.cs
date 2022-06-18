@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Naves_API.Core.DTOs;
 using Naves_API.Core.Entities;
 using Naves_API.Core.Interfaces;
 
@@ -14,18 +18,21 @@ namespace Naves_API.Controllers
     public class NavesController : ControllerBase
     {
         readonly INaveRepository _naveRepository;// inyeccion de repositorio
+        private readonly IMapper _mapper; // inyeccion de dtos
 
-        public NavesController(INaveRepository naveRepository)
+        public NavesController(INaveRepository naveRepository, IMapper mapper)
         {
             _naveRepository = naveRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public async Task <IActionResult> GetNaves()
         {
             var naves = await _naveRepository.GetNaves();
+            var navesdots = _mapper.Map<IEnumerable<NaveDto>>(naves);
 
-            return Ok(naves);
+            return Ok(navesdots);
 
         }
 
@@ -33,17 +40,29 @@ namespace Naves_API.Controllers
         public async Task<IActionResult> GetNaves(int id)
         {
             var nave = await _naveRepository.GetNaves(id);
+            var navedto = _mapper.Map<NaveDto>(nave);
+
+            return Ok(navedto);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Nave(NaveDto nave)
+        {
+            var navedto = _mapper.Map<Nave>(nave);
+            await _naveRepository.InsertNave(navedto);
 
             return Ok(nave);
 
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Nave(Nave nave)
+        [HttpGet("buscar/{buscar}")]
+        public async Task<IActionResult> GetNaves(string buscar)
         {
-            await _naveRepository.InsertNave(nave);
-
-            return Ok(nave);
+            
+            var nave = await _naveRepository.GetNavesLike(buscar);
+            var navedto = _mapper.Map<IEnumerable<NaveDto>>(nave);
+            return Ok(navedto);
 
         }
 
