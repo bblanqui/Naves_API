@@ -11,5 +11,7 @@ namespace Naves_API.Core.Interfaces
     {
         Task<IEnumerable<Nave>> GetNaves();
         Task<Nave> GetNaves(int id);
+
+        Task InsertNave(Nave nave);
     }
 }

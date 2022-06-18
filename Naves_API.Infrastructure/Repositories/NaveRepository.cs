@@ -31,5 +31,11 @@ namespace Naves_API.Infrastructure.Repositories
             var nave = await _db_Sofka_Sofka_NavesContext.Nave.FirstOrDefaultAsync(nave => nave.IdNave == id);
             return nave;
         }
+
+        public async Task InsertNave(Nave nave)
+        {
+            _db_Sofka_Sofka_NavesContext.Add(nave);
+            await _db_Sofka_Sofka_NavesContext.SaveChangesAsync();
+        }
     }
 }
