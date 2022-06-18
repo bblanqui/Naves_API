@@ -11,6 +11,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Naves_API.Core.Interfaces;
+using Naves_API.Infrastructure.Data;
+using Naves_API.Infrastructure.Repositories;
 
 namespace Naves_API
 {
@@ -26,12 +30,16 @@ namespace Naves_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<INaveRepository, NaveRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Naves_API", Version = "v1" });
             });
+
+            services.AddDbContext<db_Sofka_NavesContext>(opc =>
+                opc.UseSqlServer(Configuration.GetConnectionString("Naves")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
