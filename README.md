@@ -8,6 +8,9 @@ esta solucion esta creada y desplegada en C# con el framework asp.netcore 5
 pasos para la ejecución.
 
 1 entrar a la url http://softka.somee.com/swagger/index.html
+-----------------------------------------
 2 existen 4 tipo de naves, el endpoint de post te pide tipo de nave debes pulsar de 1 a 4
+-----------------------------------------
 3 el servicio solo te va permitir crear solo 3 naves por tipo, es decir que si quiere crear una nave tipo volador 4 veces no te deja.
+-----------------------------------------
 4 prueba y reporta tu error
