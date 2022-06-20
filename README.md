@@ -13,4 +13,6 @@ pasos para la ejecución.
 -----------------------------------------
 3 el servicio solo te va permitir crear solo 3 naves por tipo, es decir que si quiere crear una nave tipo volador 4 veces no te deja.
 -----------------------------------------
-4 prueba y reporta tu error
+4 el endpoint de buscar por caracteristica te permite ingresar un string y buscar todas la coincidencias posibles
+-----------------------------------------
+5 prueba y reporta tu error
